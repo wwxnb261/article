@@ -21,24 +21,16 @@
         <h1 class="text-center mb-4">英语考研作文图片识别批改</h1>
         
         <div class="setup-instructions">
-            <h4>使用说明</h4>
-            <p>由于API调用需要密钥认证，请按照以下步骤操作：</p>
+            <h4>重要提醒：关于跨域连接的问题 (CORS)</h4>
+            <p>当您将网站部署到线上后，您的网站会拥有一个域名，而您尝试获取数据的 API 服务在另一个完全不同的域名上。此时，浏览器出于安全考虑，会阻止您的 JavaScript 代码直接获取数据，这就是<strong>跨域问题</strong>。</p>
+            <p>本应用默认通过一个公共代理服务器解决此问题。如果遇到网络连接错误，很可能是因为该代理服务器的临时访问权限已过期。</p>
+            <p><strong>解决方法：</strong></p>
             <ol>
-                <li>打开app.js文件</li>
-                <li>找到顶部的配置部分，填写您的有道智云应用ID和密钥：
-                    <pre>// 配置信息
-const APP_KEY = '您的应用ID';
-const APP_SECRET = '您的应用密钥';</pre>
-                </li>
-                <li>保存文件后刷新页面即可使用</li>
+                <li>请访问 <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">CORS-Anywhere 官方演示页面</a>。</li>
+                <li>点击页面上的 "<strong>Request temporary access to the demo server</strong>" 按钮。</li>
+                <li>获取临时访问权限后，返回本页面刷新即可正常使用。</li>
             </ol>
-            <p>注意：请确保您的应用已开通英语作文批改API权限</p>
-            <p><strong>关于跨域问题的说明：</strong></p>
-            <p>此应用使用CORS代理（cors-anywhere.herokuapp.com）解决跨域问题。如果遇到网络连接错误，可能是因为：</p>
-            <ol>
-                <li>CORS代理服务器限制请求 - 您需要先访问<a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">https://cors-anywhere.herokuapp.com/corsdemo</a>并点击"Request temporary access to the demo server"按钮获取临时访问权限</li>
-                <li>或者您可以搭建自己的CORS代理服务器，并修改app.js中的PROXY_URL变量</li>
-            </ol>
+             <p>或者，您可以自行搭建 CORS 代理服务器，并相应修改 `app.js` 文件中的 `PROXY_URL` 变量。</p>
         </div>
         
         <!-- 模式选择 -->
@@ -207,4 +199,5 @@ const APP_SECRET = '您的应用密钥';</pre>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
